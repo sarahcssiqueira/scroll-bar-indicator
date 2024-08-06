@@ -1,6 +1,6 @@
 {
   "name": "scroll-bar-indicator",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A React component to display scroll position",
   "main": "./dist/index.js",
   "module": "dist/index.js",

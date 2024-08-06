@@ -1,14 +1,15 @@
 # Scroll Bar Indicator 
 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![NPM Version](https://img.shields.io/npm/v/scroll-bar-indicator)
+[![Release Version](https://img.shields.io/github/release/sarahcssiqueira/scroll-bar-indicator.svg?color)](https://github.com/sarahcssiqueira/scroll-bar-indicator/releases/latest)
 
 `ScrollBarIndicator` is a customizable React component that displays a scroll position indicator.
 
 <p align="center">
-  ![screenshot](./src/assets/scroll-bar-indicator-screenshot.png)
+  <img src="./src/assets/scroll-bar-indicator-screenshot.png" alt="Scroll Bar Indicator Screenshot"/>
 </p>
-
-
 
 ## Usage
 

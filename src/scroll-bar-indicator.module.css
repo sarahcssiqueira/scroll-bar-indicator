@@ -1,0 +1,22 @@
+/* Scroll */
+
+.scroll_box {
+    position: sticky;
+    top:0;
+}
+
+.scroll_bar {
+    position: relative;
+    height: 2rem;
+}
+  
+.scroll_indicator {
+    background: rgb(14, 179, 170);
+    height: 2rem;
+}
+
+.scroll_info {
+    color:rgb(50, 50, 50);
+    font-size: 1rem;
+    padding: 1rem;
+}

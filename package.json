@@ -1,6 +1,6 @@
 {
   "name": "scroll-bar-indicator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A React component to display scroll position",
   "main": "./dist/index.js",
   "module": "dist/index.js",
@@ -11,6 +11,9 @@
     "build": "webpack",
     "prepublishOnly": "npm run build"
   },
+  "publishConfig": {
+  "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "scroll",
     "react",
@@ -18,6 +21,15 @@
   ],
   "author": "Sarah C. Siqueira",
   "license": "MIT",
+  "homepage": "https://github.com/sarahcssiqueira/scroll-bar-indicator/project#readme",
+    "bugs": {
+      "url": "https://github.com/sarahcssiqueira/scroll-bar-indicator/project/issues",
+      "email": "sarahcosiqueira@gmail.com"
+    },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/sarahcssiqueira/scroll-bar-indicator.git"
+    },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"

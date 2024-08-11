@@ -2,54 +2,76 @@
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![NPM Version](https://img.shields.io/npm/v/scroll-bar-indicator)
+[![NPM Version](https://img.shields.io/npm/v/scroll-bar-indicator)](https://www.npmjs.com/package/scroll-bar-indicator)
 [![Release Version](https://img.shields.io/github/release/sarahcssiqueira/scroll-bar-indicator.svg?color)](https://github.com/sarahcssiqueira/scroll-bar-indicator/releases/latest)
 
-`ScrollBarIndicator` is a customizable React component that displays a scroll position indicator.
+Customizable React component for create a customizable scroll bar indicator. It shows a visual representation of the user's scrolling progress.
 
 <p align="center">
-  <img src="./src/assets/scroll-bar-indicator-screenshot.png" alt="Scroll Bar Indicator Screenshot"/>
+  <img src="./src/assets/screenshot.png" alt="Scroll Bar Indicator Screenshot"/>
 </p>
 
-## Usage
+See [Demo here](https://scroll-indicator-demo.sarahjobs.com)
 
-### Install
 
-To install the `scroll-bar-indicator` package, run:
+## Installation
 
-`npm install scroll-bar-indicator` or 
+To install run:
+
+`npm i scroll-bar-indicator` or 
 
 `yarn add scroll-bar-indicator`
 
-### Import
 
-Import the ScrollBarIndicator in your React application:
+## Import
+
+Import the component:
 
 `import ScrollBarIndicator from 'scroll-bar-indicator';`
 
-Add the component with your custom props.
+Add the component and pass your custom props:
 
 ```
     <ScrollBarIndicator
-      barColor="rgb(200, 200, 200)"
+      barColor="#b3b3b3"
       barHeight = "2rem",
-      indicatorColor="rgb(14, 179, 170)" 
-      infoColor="rgb(51, 51, 51)"
-      showInfo={true}
+      indicatorColor="#8e32ff" 
+      infoColor="#333333"
+      showInfo={true},
+      info="Page"
     />
 
 ```
 
-### Props
 
-To customize, use the props below into the ScrollBarIndicator:
+## Props
 
-- `barColor` (string): Background color of the scroll bar. Default is `rgb(179, 179, 179)`.
-- `barHeight` (string): Defines the bar height. Default is `2 rem`.
-- `indicatorColor` (string): Background color of the scroll indicator. Default is `rgb(14, 179, 170)`.
-- `infoColor` (string): Color of the scroll info text. Default is `rgb(51, 51, 51)`.
-- `showInfo` (boolean): Whether to display the scroll info text. Default is `true`.
+| Prop                | Type                  | Default Value          | Description                               |
+|---------------------|-----------------------|------------------------|-------------------------------------------|
+| barColor            | String                | #b3b3b3                | Color of the scroll bar                   |
+| barHeight           | String                | 2rem                   | Defines the bar height.                   |
+| indicatorColor      | String                | #8e32ff                | Color of the scroll indicator             |
+| infoColor           | String                | #333333                | Color of the scroll info text             |
+| showInfo            | Boolean               | True                   | Whether to display the scroll info text   |
+| info                | String                | Page                   | Text to display info below the component  |
+
+
+## Contributing
+
+Contributions are welcome.
+
+- Fork the repository
+- Create your feature branch (`git checkout -b feature/my-feature`)
+- Commit your changes (`git commit -m 'commit message'`)
+- Push to the branch (`git push origin feature/my-featuree`)
+- Create a new Pull Request
+
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
+
+
+## Contact
+
+Issues, suggestions, or feedback, create an [issue](https://github.com/sarahcssiqueira/scroll-bar-indicator/issues).

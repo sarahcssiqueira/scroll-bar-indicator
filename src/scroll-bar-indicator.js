@@ -6,7 +6,8 @@ const ScrollBar = ( {
     barHeight= '2rem',
     indicatorColor = 'rgb(14, 179, 170)',
     infoColor = 'rgb(51, 51, 51)',
-    showInfo = true
+    showInfo = true,
+    info = 'Page'
 }) => {
   const [scroll, setScroll] = useState(0);
 
@@ -39,7 +40,7 @@ const ScrollBar = ( {
         {showInfo && ( 
             <p className="scroll_info" 
                style= {{ color: infoColor}}>
-                {`Text ${scrollString}% scrolled`}
+                {`${info}${' '}${scrollString}% scrolled`}
             </p>
         )}
       </div>

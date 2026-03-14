@@ -11,19 +11,31 @@ const ScrollBar = ( {
 }) => {
   const [scroll, setScroll] = useState(0);
 
-  const onScroll = useCallback(() => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    const maxHeight = scrollHeight - clientHeight;
-    const scrolledPercent = (scrollTop / maxHeight) * 100;
-    setScroll(scrolledPercent);
-  }, []);
-
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
+
+    console.log('Window:', typeof window !== 'undefined');
+    console.log('Document:', typeof document !== 'undefined');
+  
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const maxHeight = scrollHeight - clientHeight;
+        const scrolledPercent = (scrollTop / maxHeight) * 100;
+        setScroll(scrolledPercent);
+      }
     };
-  }, [onScroll]);
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Call it initially to set the correct state on page load
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []); 
 
   const scrollString = Math.trunc(scroll);
 

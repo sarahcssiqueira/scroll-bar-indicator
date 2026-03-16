@@ -1,3 +1,5 @@
-src/
 .gitignore
 .github/workflows
+.babelrc
+package-lock.json
+

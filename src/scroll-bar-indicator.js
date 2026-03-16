@@ -1,63 +1,71 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import './scroll-bar-indicator.module.css'; // Import the CSS file
+function init(indicator) {
+  document.body.appendChild(indicator);
 
-const ScrollBar = ( {
-    barColor = 'rgb(179, 179, 179)',
-    barHeight= '2rem',
-    indicatorColor = 'rgb(14, 179, 170)',
-    infoColor = 'rgb(51, 51, 51)',
-    showInfo = true,
-    info = 'Page'
-}) => {
-  const [scroll, setScroll] = useState(0);
+  function update() {
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
 
-  useEffect(() => {
+    const scrollHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
 
-    console.log('Window:', typeof window !== 'undefined');
-    console.log('Document:', typeof document !== 'undefined');
-  
-    const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-        const maxHeight = scrollHeight - clientHeight;
-        const scrolledPercent = (scrollTop / maxHeight) * 100;
-        setScroll(scrolledPercent);
-      }
-    };
+    const percent = (scrollTop / scrollHeight) * 100;
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener("scroll", handleScroll);
-      handleScroll(); // Call it initially to set the correct state on page load
+    indicator.style.width = percent + "%";
+  }
+
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+
+      ticking = true;
     }
+  }
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []); 
+  window.addEventListener("scroll", onScroll);
 
-  const scrollString = Math.trunc(scroll);
+  return {
+    destroy() {
+      window.removeEventListener("scroll", onScroll);
+      indicator.remove();
+    },
+    element: indicator
+  };
+}
 
-  return (
-    <div className="scroll_box">
-      <div className="scroll_bar"
-            style={{ background: barColor, height: barHeight, }}>
-        <div className="scroll_indicator"
-            style={{ 
-                width: `${scroll}%`, 
-                background: indicatorColor, 
-                height: barHeight, }}>
-        </div>
-        {showInfo && ( 
-            <p className="scroll_info" 
-               style= {{ color: infoColor}}>
-                {`${info}${' '}${scrollString}% scrolled`}
-            </p>
-        )}
-      </div>
-    </div>
-  );
-};
+export default function createScrollIndicator(options = {}) {
+  const {
+    color = "#0073aa",
+    height = "4px",
+    zIndex = 9999,
+    position = "top",
+    transition = "width 0.1s ease-out"
+  } = options;
 
-export default ScrollBar;
+  const indicator = document.createElement("div");
+
+  indicator.style.position = "fixed";
+  indicator.style.left = "0";
+  indicator.style.width = "0%";
+  indicator.style.height = height;
+  indicator.style.background = color;
+  indicator.style.zIndex = zIndex;
+  indicator.style.transition = transition;
+
+  if (position === "bottom") {
+    indicator.style.bottom = "0";
+  } else {
+    indicator.style.top = "0";
+  }
+
+  if (document.body) {
+    return init(indicator);
+  }
+
+  window.addEventListener("DOMContentLoaded", () => init(indicator));
+}
